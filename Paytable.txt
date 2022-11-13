@@ -1,0 +1,11 @@
+A A A A A 10
+A A A A    9
+A A A	   8
+
+K K K K K  7
+K K K K    6
+K K K      5
+
+Q Q Q Q Q  4
+Q Q Q Q    3
+Q Q Q      2
