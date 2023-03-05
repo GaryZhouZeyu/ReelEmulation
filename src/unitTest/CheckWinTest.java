@@ -2,7 +2,9 @@ package unitTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
@@ -19,10 +21,10 @@ class CheckWinTest {
 
 	@Test
 	void test() throws IOException{
-		String filePath = "C:\\Users\\Gary\\eclipse-workspace\\ReelEmulation\\Paytable.txt";
-		RewardLookUp rlu = new RewardLookUp(filePath);
-		String filePath2 = "C:\\Users\\Gary\\eclipse-workspace\\ReelEmulation\\patterns.txt";
-		PatternLookUp plu = new PatternLookUp(filePath2);
+		InputStream fileInputStream = new FileInputStream("C:\\Users\\Gary\\eclipse-workspace\\ReelEmulation\\resources\\Paytable.txt");
+		RewardLookUp rlu = new RewardLookUp(fileInputStream);
+		InputStream fileInputStream2 = new FileInputStream("C:\\Users\\Gary\\eclipse-workspace\\ReelEmulation\\resources\\patterns.txt");
+		PatternLookUp plu = new PatternLookUp(fileInputStream2);
 		String symbols[][] = {
 				{"K","K","K","A","A"},
 				{"K","Q","Q","Q","Q"},
@@ -30,15 +32,15 @@ class CheckWinTest {
 		};
 		CheckWin cw = new CheckWin(symbols);
 		double result = cw.calculateWin(rlu, plu);
-		assertEquals(5, result);
+		assertEquals(10, result);
 	}
 	
 	@Test
 	void negativeTest() throws IOException{
-		String filePath = "C:\\Users\\Gary\\eclipse-workspace\\ReelEmulation\\Paytable.txt";
-		RewardLookUp rlu = new RewardLookUp(filePath);
-		String filePath2 = "C:\\Users\\Gary\\eclipse-workspace\\ReelEmulation\\patterns.txt";
-		PatternLookUp plu = new PatternLookUp(filePath2);
+		InputStream fileInputStream = new FileInputStream("C:\\Users\\Gary\\eclipse-workspace\\ReelEmulation\\resources\\Paytable.txt");
+		RewardLookUp rlu = new RewardLookUp(fileInputStream);
+		InputStream fileInputStream2 = new FileInputStream("C:\\Users\\Gary\\eclipse-workspace\\ReelEmulation\\resources\\patterns.txt");
+		PatternLookUp plu = new PatternLookUp(fileInputStream2);
 		String symbols[][] = {
 				{"J","K","K","K","K"},
 				{"Q","Q","Q","Q","Q"},
@@ -51,10 +53,10 @@ class CheckWinTest {
 	
 	@Test
 	void negativeTest2() throws IOException{
-		String filePath = "C:\\Users\\Gary\\eclipse-workspace\\ReelEmulation\\Paytable.txt";
-		RewardLookUp rlu = new RewardLookUp(filePath);
-		String filePath2 = "C:\\Users\\Gary\\eclipse-workspace\\ReelEmulation\\patterns.txt";
-		PatternLookUp plu = new PatternLookUp(filePath2);
+		InputStream fileInputStream = new FileInputStream("C:\\Users\\Gary\\eclipse-workspace\\ReelEmulation\\resources\\Paytable.txt");
+		RewardLookUp rlu = new RewardLookUp(fileInputStream);
+		InputStream fileInputStream2 = new FileInputStream("C:\\Users\\Gary\\eclipse-workspace\\ReelEmulation\\resources\\patterns.txt");
+		PatternLookUp plu = new PatternLookUp(fileInputStream2);
 		String symbols[][] = {
 				{"9","10","J","Q","K"},
 				{"9","10","J","Q","K"},

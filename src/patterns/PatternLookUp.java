@@ -3,6 +3,8 @@ package patterns;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -15,9 +17,9 @@ public class PatternLookUp {
 	private List<Pattern> patterns;
 	
 
-	public PatternLookUp(String file) throws IOException{//read paytable
+	public PatternLookUp(InputStream file) throws IOException{//read paytable
 		patterns = new ArrayList<Pattern>();
-        BufferedReader br = new BufferedReader(new FileReader(file));
+        BufferedReader br = new BufferedReader(new InputStreamReader(file));
         String st;
         int i=0;
         while ((st = br.readLine()) != null) {

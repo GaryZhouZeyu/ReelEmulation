@@ -4,33 +4,37 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 public class SymbolLookUp {
 	private String[][] reels;
-	public SymbolLookUp(String filePath) throws IOException{
-		ReadReelInfo(filePath);
+	public SymbolLookUp(InputStream fileInput) throws IOException{
+		ReadReelInfo(fileInput);
 	}
-	private void ReadReelInfo(String filePath) throws IOException{
-		File file = new File(filePath);
+	private void ReadReelInfo(InputStream fileInput) throws IOException{
 		
 		// count row column length of reel strips
-        BufferedReader br = new BufferedReader(new FileReader(file));
+        BufferedReader br = new BufferedReader(new InputStreamReader(fileInput));
         String st;
         int symbolCount = 0, reelCount = 0;
+        List<String> lines = new ArrayList<>();
         while ((st = br.readLine()) != null) {
+        	lines.add(st);
         	StringTokenizer tok = new StringTokenizer(st); 
         	reelCount = tok.countTokens();
 		    symbolCount++;
     	}
         reels = new String[symbolCount][reelCount];
+        //br.close();
         
         // Read elements into 2d array
         int symbolNumber = 0, reelNumber = 0;
-        BufferedReader br2 = new BufferedReader(new FileReader(file));
-        String st2;
-        while ((st2 = br2.readLine()) != null) {
-        	StringTokenizer tok = new StringTokenizer(st2);  
+        for(String thisLine:lines){
+        	StringTokenizer tok = new StringTokenizer(thisLine);  
 		        while (tok.hasMoreTokens()) {  
 		            reels[symbolNumber][reelNumber] = tok.nextToken();
 		            reelNumber++;

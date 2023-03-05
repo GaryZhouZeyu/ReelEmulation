@@ -2,7 +2,9 @@ package UserInput;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -36,15 +38,15 @@ public class InputDriver {
 		}
 	}
 	public static void main(String[] args) throws IOException{
-		String filePath = "C:\\Users\\Gary\\eclipse-workspace\\ReelEmulation\\Reels.txt";
-		SymbolLookUp slu = new SymbolLookUp(filePath);
+		InputStream fileInputStream = new FileInputStream("resources\\Reels.txt");
+		SymbolLookUp slu = new SymbolLookUp(fileInputStream);
 		int[] indices = userInput();
 		String[][] symbols = slu.constructSymbolsFromMiddleIndices(indices);
 		printMatrix(symbols);
-		String filePath1 = "C:\\Users\\Gary\\eclipse-workspace\\ReelEmulation\\Paytable.txt";
-		RewardLookUp rlu = new RewardLookUp(filePath1);
-		String filePath2 = "C:\\Users\\Gary\\eclipse-workspace\\ReelEmulation\\patterns.txt";
-		PatternLookUp plu = new PatternLookUp(filePath2);
+		InputStream fileInputStream1 = new FileInputStream("resources\\Paytable.txt");
+		RewardLookUp rlu = new RewardLookUp(fileInputStream1);
+		InputStream fileInputStream2 = new FileInputStream("resources\\patterns.txt");
+		PatternLookUp plu = new PatternLookUp(fileInputStream2);
 		CheckWin cw = new CheckWin(symbols);
 		double result = cw.calculateWin(rlu, plu);
 		System.out.println("win = " + result);

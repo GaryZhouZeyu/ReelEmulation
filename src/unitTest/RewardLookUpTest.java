@@ -2,7 +2,9 @@ package unitTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,8 +23,8 @@ class RewardLookUpTest {
 
 	@Test
 	void test() throws IOException{
-		String filePath = "C:\\Users\\Gary\\eclipse-workspace\\ReelEmulation\\Paytable.txt";
-		RewardLookUp rlu = new RewardLookUp(filePath);
+		InputStream fileInputStream = new FileInputStream("resources\\Paytable.txt");
+		RewardLookUp rlu = new RewardLookUp(fileInputStream);
 		
 		List<PatternMatch> patternMatches = new ArrayList<PatternMatch>();
 		patternMatches.add(new PatternMatch("Q", 3));
@@ -34,8 +36,8 @@ class RewardLookUpTest {
 
 	@Test
 	void testFindHighests() throws IOException{
-		String filePath = "C:\\Users\\Gary\\eclipse-workspace\\ReelEmulation\\Paytable.txt";
-		RewardLookUp rlu = new RewardLookUp(filePath);
+		InputStream fileInputStream = new FileInputStream("resources\\Paytable.txt");
+		RewardLookUp rlu = new RewardLookUp(fileInputStream);
 		List<PatternMatch> patternMatches = new ArrayList<PatternMatch>();
 		patternMatches.add(new PatternMatch("Q", 3));
 		patternMatches.add(new PatternMatch("Q", 4));
@@ -49,8 +51,8 @@ class RewardLookUpTest {
 	
 	@Test
 	void testFindHighestsNoReward() throws IOException{
-		String filePath = "C:\\Users\\Gary\\eclipse-workspace\\ReelEmulation\\Paytable.txt";
-		RewardLookUp rlu = new RewardLookUp(filePath);
+		InputStream fileInputStream = new FileInputStream("resources\\Paytable.txt");
+		RewardLookUp rlu = new RewardLookUp(fileInputStream);
 		List<PatternMatch> patternMatches = new ArrayList<PatternMatch>();
 		patternMatches.add(new PatternMatch("J", 3));
 		patternMatches.add(new PatternMatch("J", 4));

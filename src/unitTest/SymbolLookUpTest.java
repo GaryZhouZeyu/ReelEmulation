@@ -2,7 +2,9 @@ package unitTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
@@ -17,8 +19,8 @@ class SymbolLookUpTest {
 
 	@Test
 	void test() throws IOException{
-		String filePath = "C:\\Users\\Gary\\eclipse-workspace\\ReelEmulation\\Reels.txt";
-		SymbolLookUp slu = new SymbolLookUp(filePath);
+		InputStream fileInputStream = new FileInputStream("resources\\Reels.txt");
+		SymbolLookUp slu = new SymbolLookUp(fileInputStream);
 		String symbol = slu.findSymbol(0, 0);
 		assertEquals("A", symbol);
 		
@@ -26,8 +28,8 @@ class SymbolLookUpTest {
 	
 	@Test
 	void testConstructSymbolsFromMiddleIndices() throws IOException{
-		String filePath = "C:\\Users\\Gary\\eclipse-workspace\\ReelEmulation\\Reels.txt";
-		SymbolLookUp slu = new SymbolLookUp(filePath);
+		InputStream fileInputStream = new FileInputStream("resources\\Reels.txt");
+		SymbolLookUp slu = new SymbolLookUp(fileInputStream);
 		int[] indices = {1,2,3,4,5};
 		String[][] symbols = slu.constructSymbolsFromMiddleIndices(indices);
 		assertEquals(3, symbols.length);

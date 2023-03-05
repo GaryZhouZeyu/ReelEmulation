@@ -3,6 +3,8 @@ package payTable;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -12,9 +14,9 @@ import patterns.PatternMatch;
 
 public class RewardLookUp {
 	private List<Reward> rewards;
-	public RewardLookUp(String file) throws IOException{//read paytable
+	public RewardLookUp(InputStream fileInput) throws IOException{//read paytable
 		rewards = new ArrayList<Reward>();
-        BufferedReader br = new BufferedReader(new FileReader(file));
+        BufferedReader br = new BufferedReader(new InputStreamReader(fileInput));
         String st;double pay=0;
         while ((st = br.readLine()) != null) {
         	if (st.trim().length() > 0) {
